@@ -1,41 +1,39 @@
 ﻿using Newtonsoft.Json;
+    Console.WriteLine("Введіть перший рядок");
+    string string1 = Console.ReadLine();
+    Console.WriteLine("Введіть другий рядок");
+    string string2 = Console.ReadLine();
+if (string1 != null && string2 != null)
+{
+    String mainString = new()
+    {
+        Str = string1
+    };
 
-
-        String string1 = new String();
-        String string2 = new String();
-        Console.WriteLine("Введіть перший рядок");
-        string1.Str = Console.ReadLine();
-        Console.WriteLine("Введіть другий рядок");
-        string2.Str = Console.ReadLine();
-        var output1 = JsonConvert.SerializeObject(string1);
-        var output2 = JsonConvert.SerializeObject(string2);
-
-        String deserializedProduct1 = JsonConvert.DeserializeObject<String>(output1);
-        String deserializedProduct2 = JsonConvert.DeserializeObject<String>(output2);
-
-        if (deserializedProduct1 != null && deserializedProduct2 != null)
+    var output = JsonConvert.SerializeObject(mainString);
+    var deserializedProduct = JsonConvert.DeserializeObject<String>(output);
+    if (deserializedProduct != null)
+    {
+        Console.WriteLine("Введіть:\n1 - конкатенація двох рядків\n2 - вирізання підрядка\n3 - порівняння двох рядків");
+        int input = Convert.ToInt32(Console.ReadLine());
+        switch (input)
         {
-            Console.WriteLine("Введіть:\n1 - конкатенація двох рядків\n2 - вирізання підрядка\n3 - порівняння двох рядків");
-            int input = Convert.ToInt32(Console.ReadLine());
-            switch (input)
-            {
-                case 1:
-                    Console.WriteLine("Результат:\n" + deserializedProduct1.concatenate(deserializedProduct1.Str, deserializedProduct2.Str));
-                    break;
-                case 2:
-                    Console.WriteLine("Результат:\n" + deserializedProduct1.removeSubstring(deserializedProduct1.Str, deserializedProduct2.Str));
-                    break;
-                case 3:
-                    Console.WriteLine("Результат:\n" + deserializedProduct1.compare(deserializedProduct1.Str, deserializedProduct2.Str));
-                    break;
-                default:
-                    Console.WriteLine("Не можу розпізнати метод!");
-                    break;
-            }
-
+            case 1:
+                Console.WriteLine("Результат:\n" + deserializedProduct.Concatenate(string2));
+                break;
+            case 2:
+                Console.WriteLine("Результат:\n" + deserializedProduct.RemoveSubstring(string2));
+                break;
+            case 3:
+                Console.WriteLine("Результат:\n" + deserializedProduct.Compare(string2));
+                break;
+            default:
+                Console.WriteLine("Не можу розпізнати метод!");
+                break;
         }
-        else
-        {
-            Console.WriteLine("Неправильно введений рядок!");
-        }
-    
+    }
+}
+else
+{
+    Console.WriteLine("Неправильно введений рядок!");
+}

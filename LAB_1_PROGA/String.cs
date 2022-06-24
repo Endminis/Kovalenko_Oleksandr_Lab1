@@ -14,34 +14,35 @@
 
         }
 
-        public string concatenate(string str1, string str2)
+        public string Concatenate(string str)
         {
-            return str1 + str2;
+        return this.Str + str;
         }
-        public string removeSubstring(string str1, string str2)
+        public string RemoveSubstring(string str)
         {
-            if (str1.IndexOf(str2) != -1)
+
+        if (this.Str.IndexOf(str) != -1)
             {
-                return str1.Remove(str1.IndexOf(str2), str2.Length);
+                return this.Str.Remove(this.Str.IndexOf(str), str.Length);
             }
             else
             {
                 return "Другого рядка немає в першому!";
             }
         }
-        public string compare(string str1, string str2)
+        public string Compare(string str) 
         {
-            if (str1.Equals(str2))
+        if (this.Str.Equals(str))
             {
                 return "Рядки однакові";
             }
             else
             {
-                if (str1.Length == str2.Length)
+                if (this.Str.Length == str.Length)
                 {
                     return "Однакова довжина, але рядки не рівні";
                 }
-                else if (str1.Length > str2.Length)
+                else if (this.Str.Length > str.Length)
                 {
                     return "Перший рядок більший за другий";
                 }
